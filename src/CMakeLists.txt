@@ -21,6 +21,7 @@
 #
 # SPDX-License-Identifier: Apache-2.0
 
-/.zed
-/build
-/prefix
+set(Swift_INTERFACE_DIRECTORY ${CMAKE_BINARY_DIR}/swift)
+
+add_subdirectory(Application)
+add_subdirectory(Library)

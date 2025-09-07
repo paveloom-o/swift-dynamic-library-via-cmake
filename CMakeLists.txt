@@ -21,6 +21,13 @@
 #
 # SPDX-License-Identifier: Apache-2.0
 
-/.zed
-/build
-/prefix
+cmake_minimum_required(VERSION 4.0)
+
+# C is added because of the usage of GNUInstallDirs below
+#
+# See https://gitlab.kitware.com/cmake/cmake/-/issues/26649
+project(Example LANGUAGES Swift C VERSION 1.0.0)
+
+include(GNUInstallDirs)
+
+add_subdirectory(src)

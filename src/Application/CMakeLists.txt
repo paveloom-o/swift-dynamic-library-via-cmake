@@ -21,6 +21,10 @@
 #
 # SPDX-License-Identifier: Apache-2.0
 
-/.zed
-/build
-/prefix
+add_executable(Application
+    main.swift
+)
+
+install(TARGETS Application
+    DESTINATION ${CMAKE_INSTALL_BINDIR}
+)

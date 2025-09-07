@@ -21,6 +21,27 @@
 #
 # SPDX-License-Identifier: Apache-2.0
 
-/.zed
-/build
-/prefix
+set(ModuleName Library)
+
+add_library(${ModuleName} SHARED
+    Library.swift
+)
+
+set_target_properties(${ModuleName} PROPERTIES
+    VERSION ${PROJECT_VERSION}
+    SOVERSION ${PROJECT_VERSION_MAJOR}
+)
+
+target_compile_options(${ModuleName} PRIVATE
+    -enable-library-evolution
+    -emit-module-interface
+    -emit-module-interface-path ${Swift_INTERFACE_DIRECTORY}/${ModuleName}.swiftinterface
+)
+
+install(TARGETS ${ModuleName}
+    LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}/${PROJECT_NAME}-${PROJECT_VERSION_MAJOR}
+)
+
+install(DIRECTORY ${Swift_INTERFACE_DIRECTORY}/
+    DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/${PROJECT_NAME}-${PROJECT_VERSION_MAJOR}/${PROJECT_NAME}
+)
