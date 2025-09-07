@@ -30,4 +30,7 @@ project(Example LANGUAGES Swift C VERSION 1.0.0)
 
 include(GNUInstallDirs)
 
+option(BUILD_APPLICATION "Build the Application target")
+option(BUILD_LIBRARY "Build the Library target")
+
 add_subdirectory(src)

@@ -23,5 +23,10 @@
 
 set(Swift_INTERFACE_DIRECTORY ${CMAKE_BINARY_DIR}/swift)
 
-add_subdirectory(Application)
-add_subdirectory(Library)
+if(BUILD_APPLICATION)
+    add_subdirectory(Application)
+endif()
+
+if (BUILD_LIBRARY)
+    add_subdirectory(Library)
+endif()
