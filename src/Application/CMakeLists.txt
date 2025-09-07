@@ -21,10 +21,12 @@
 #
 # SPDX-License-Identifier: Apache-2.0
 
-add_executable(Application
+set(TARGET_NAME Application)
+
+add_executable(${TARGET_NAME}
     main.swift
 )
 
-install(TARGETS Application
+install(TARGETS ${TARGET_NAME}
     DESTINATION ${CMAKE_INSTALL_BINDIR}
 )

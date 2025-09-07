@@ -21,24 +21,24 @@
 #
 # SPDX-License-Identifier: Apache-2.0
 
-set(ModuleName Library)
+set(TARGET_NAME Library)
 
-add_library(${ModuleName} SHARED
+add_library(${TARGET_NAME} SHARED
     Library.swift
 )
 
-set_target_properties(${ModuleName} PROPERTIES
+set_target_properties(${TARGET_NAME} PROPERTIES
     VERSION ${PROJECT_VERSION}
     SOVERSION ${PROJECT_VERSION_MAJOR}
 )
 
-target_compile_options(${ModuleName} PRIVATE
+target_compile_options(${TARGET_NAME} PRIVATE
     -enable-library-evolution
     -emit-module-interface
-    -emit-module-interface-path ${Swift_INTERFACE_DIRECTORY}/${ModuleName}.swiftinterface
+    -emit-module-interface-path ${Swift_INTERFACE_DIRECTORY}/${TARGET_NAME}.swiftinterface
 )
 
-install(TARGETS ${ModuleName}
+install(TARGETS ${TARGET_NAME}
     LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}/${PROJECT_NAME}-${PROJECT_VERSION_MAJOR}
 )
 
