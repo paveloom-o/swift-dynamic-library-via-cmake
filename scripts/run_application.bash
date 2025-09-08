@@ -28,4 +28,4 @@ root_dir="${script_path%/*/*}"
 
 source "$root_dir/scripts/lib.bash"
 
-LD_LIBRARY_PATH="${prefix_library_dir}/lib64/Library-1" exec "$prefix_application_dir/bin/Application"
+LD_LIBRARY_PATH="${prefix_library_dir}/lib64/Library-1" exec "$prefix_application_dir/bin/Application" "$@"
