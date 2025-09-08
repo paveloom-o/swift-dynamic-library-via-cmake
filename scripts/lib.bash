@@ -23,9 +23,7 @@
 #
 # SPDX-License-Identifier: Apache-2.0
 
-set -e
-
-script_path="$(realpath -s "$0")"
+script_path="$(realpath -s "${BASH_SOURCE[0]}")"
 export root_dir="${script_path%/*/*}"
 
 export build_dir="$root_dir/build"

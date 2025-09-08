@@ -25,7 +25,7 @@
 
 set -ex
 
-script_path="$(realpath -s "$0")"
+script_path="$(realpath -s "${BASH_SOURCE[0]}")"
 root_dir="${script_path%/*/*}"
 
 source "$root_dir/scripts/lib.bash"
