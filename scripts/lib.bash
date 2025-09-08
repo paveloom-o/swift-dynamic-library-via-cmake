@@ -54,9 +54,16 @@ build() {
 }
 
 build_application() {
-    build "$build_application_dir" "$prefix_application_dir" -DBUILD_APPLICATION=yes
+    build \
+        "$build_application_dir" \
+        "$prefix_application_dir" \
+        -DBUILD_APPLICATION=yes \
+        -DLibrary_ROOT="$prefix_library_dir"
 }
 
 build_library() {
-    build "$build_library_dir" "$prefix_library_dir" -DBUILD_LIBRARY=yes
+    build \
+        "$build_library_dir" \
+        "$prefix_library_dir" \
+        -DBUILD_LIBRARY=yes
 }
