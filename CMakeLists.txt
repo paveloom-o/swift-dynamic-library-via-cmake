@@ -30,6 +30,7 @@ set(CMAKE_Swift_LANGUAGE_VERSION 6)
 # See https://gitlab.kitware.com/cmake/cmake/-/issues/26649
 project(Example LANGUAGES Swift C VERSION 1.0.0)
 
+include(CMakePackageConfigHelpers)
 include(GNUInstallDirs)
 
 option(BUILD_APPLICATION "Build the Application target")
