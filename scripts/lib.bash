@@ -23,7 +23,7 @@
 #
 # SPDX-License-Identifier: Apache-2.0
 
-set -ex
+set -e
 
 script_path="$(realpath -s "$0")"
 export root_dir="${script_path%/*/*}"
@@ -36,3 +36,23 @@ export prefix_application_dir="$prefix_dix/application"
 
 export build_library_dir="$build_dir/library"
 export prefix_library_dir="$prefix_dix/library"
+
+build() {
+    local build_target_dir="$1"
+    local prefix_target_dir="$2"
+    local cmake_flag="$3"
+
+    rm -rf "$build_target_dir" "$prefix_target_dir"
+
+    cmake -G Ninja -S "$root_dir" -B "$build_target_dir" "$cmake_flag"
+    cmake --build "$build_target_dir" --verbose
+    cmake --install "$build_target_dir" --prefix "$prefix_target_dir/usr"
+}
+
+build_application() {
+    build "$build_application_dir" "$prefix_application_dir" -DBUILD_APPLICATION=yes
+}
+
+build_library() {
+    build "$build_library_dir" "$prefix_library_dir" -DBUILD_LIBRARY=yes
+}

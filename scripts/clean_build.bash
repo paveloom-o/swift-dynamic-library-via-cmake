@@ -28,16 +28,7 @@ set -ex
 script_path="$(realpath -s "$0")"
 root_dir="${script_path%/*/*}"
 
-source "$root_dir/scripts/define_dirs.bash"
+source "$root_dir/scripts/lib.bash"
 
-rm -rf "$build_library_dir" "$prefix_library_dir"
-
-cmake -G Ninja -S "$root_dir" -B "$build_library_dir" -DBUILD_LIBRARY=yes
-cmake --build "$build_library_dir" --verbose
-cmake --install "$build_library_dir" --prefix "$prefix_library_dir/usr"
-
-rm -rf "$build_application_dir" "$prefix_application_dir"
-
-cmake -G Ninja -S "$root_dir" -B "$build_application_dir" -DBUILD_APPLICATION=yes
-cmake --build "$build_application_dir" --verbose
-cmake --install "$build_application_dir" --prefix "$prefix_application_dir/usr"
+build_library
+build_application
