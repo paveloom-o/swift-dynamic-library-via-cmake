@@ -23,6 +23,8 @@
 
 cmake_minimum_required(VERSION 4.0)
 
+set(CMAKE_Swift_LANGUAGE_VERSION 6)
+
 # C is added because of the usage of GNUInstallDirs below
 #
 # See https://gitlab.kitware.com/cmake/cmake/-/issues/26649
