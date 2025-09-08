@@ -42,6 +42,11 @@ build() {
     local prefix_target_dir="$2"
     local cmake_flag="$3"
 
+    [[ -z "$1" || -z "$2" || -z "$3" ]] && {
+        echo "missing arguments"
+        return
+    }
+
     rm -rf "$build_target_dir" "$prefix_target_dir"
 
     cmake -G Ninja -S "$root_dir" -B "$build_target_dir" "$cmake_flag"
