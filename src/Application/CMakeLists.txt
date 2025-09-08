@@ -23,9 +23,13 @@
 
 set(TARGET_NAME Application)
 
+find_package(Library 1 REQUIRED CONFIG)
+
 add_executable(${TARGET_NAME}
     main.swift
 )
+
+target_link_libraries(${TARGET_NAME} Library)
 
 install(TARGETS ${TARGET_NAME}
     DESTINATION ${CMAKE_INSTALL_BINDIR}
