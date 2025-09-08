@@ -20,3 +20,13 @@
 // limitations under the License.
 //
 // SPDX-License-Identifier: Apache-2.0
+
+public enum Greeter {
+    public static func greet() {
+        print("Hello there!")
+    }
+
+    public static func greet(with name: String) {
+        print("Hello there, \(name)!")
+    }
+}
