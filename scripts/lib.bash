@@ -27,18 +27,19 @@ script_path="$(realpath -s "${BASH_SOURCE[0]}")"
 export root_dir="${script_path%/*/*}"
 
 export build_dir="$root_dir/build"
-export prefix_dix="$root_dir/prefix"
+export prefix_dir="$root_dir/prefix"
+export suffix_dir="/usr"
 
 export build_application_dir="$build_dir/application"
-export prefix_application_dir="$prefix_dix/application"
+export prefix_application_dir="$prefix_dir/application/$suffix_dir"
 
 export build_library_dir="$build_dir/library"
-export prefix_library_dir="$prefix_dix/library"
+export prefix_library_dir="$prefix_dir/library$suffix_dir"
 
 build() {
     local build_target_dir="$1"
     local prefix_target_dir="$2"
-    local cmake_flag="$3"
+    local cmake_flags=("${@:3}")
 
     [[ -z "$1" || -z "$2" || -z "$3" ]] && {
         echo "missing arguments"
@@ -47,9 +48,9 @@ build() {
 
     rm -rf "$build_target_dir" "$prefix_target_dir"
 
-    cmake -G Ninja -S "$root_dir" -B "$build_target_dir" "$cmake_flag"
+    cmake -G Ninja -S "$root_dir" -B "$build_target_dir" "${cmake_flags[@]}"
     cmake --build "$build_target_dir" --verbose
-    cmake --install "$build_target_dir" --prefix "$prefix_target_dir/usr"
+    cmake --install "$build_target_dir" --prefix "$prefix_target_dir"
 }
 
 build_application() {
