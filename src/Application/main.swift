@@ -21,4 +21,11 @@
 //
 // SPDX-License-Identifier: Apache-2.0
 
-print("Yo, what's up!")
+import Library
+
+if CommandLine.arguments.count > 1 {
+    let name = CommandLine.arguments[1]
+    Greeter.greet(with: name)
+} else {
+    Greeter.greet()
+}
