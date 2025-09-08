@@ -26,18 +26,13 @@
 set -ex
 
 script_path="$(realpath -s "$0")"
-root_dir="${script_path%/*/*}"
+export root_dir="${script_path%/*/*}"
 
-source "$root_dir/scripts/define_dirs.bash"
+export build_dir="$root_dir/build"
+export prefix_dix="$root_dir/prefix"
 
-rm -rf "$build_library_dir" "$prefix_library_dir"
+export build_application_dir="$build_dir/application"
+export prefix_application_dir="$prefix_dix/application"
 
-cmake -G Ninja -S "$root_dir" -B "$build_library_dir" -DBUILD_LIBRARY=yes
-cmake --build "$build_library_dir" --verbose
-cmake --install "$build_library_dir" --prefix "$prefix_library_dir/usr"
-
-rm -rf "$build_application_dir" "$prefix_application_dir"
-
-cmake -G Ninja -S "$root_dir" -B "$build_application_dir" -DBUILD_APPLICATION=yes
-cmake --build "$build_application_dir" --verbose
-cmake --install "$build_application_dir" --prefix "$prefix_application_dir/usr"
+export build_library_dir="$build_dir/library"
+export prefix_library_dir="$prefix_dix/library"
