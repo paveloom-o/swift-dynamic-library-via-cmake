@@ -98,6 +98,17 @@ Hello there, Pavel!
 
 Experiment with changing the Library code and rebuilding the Library target via [`./scripts/rebuild_library.bash`](./scripts/rebuild_library.bash). This should make the Application reflect the changes made without rebuilding it, assuming the changes don't break [binary compatibility](https://github.com/swiftlang/swift/blob/main/docs/LibraryEvolution.rst#supported-evolution).
 
+## Flags
+
+Essential `swiftc` flags for preparing a dynamic library for consumption:
+
+- `-emit-module-interface`: Output module interface file
+- `-enable-library-evolution`: Build the module to allow binary-compatible library evolution
+
+See also:
+
+- [Swift Blog: Library Evolution](https://www.swift.org/blog/library-evolution/)
+
 ## Output files
 
 Besides the dynamic library file (`.so`) and CMake package files (`.cmake`), other files are distributed with the library.
