@@ -22,10 +22,12 @@
 // SPDX-License-Identifier: Apache-2.0
 
 public enum Greeter {
+    /// Do a generic greeting
     public static func greet() {
         print("Hello there!")
     }
 
+    /// Greet with the name specified
     public static func greet(with name: String) {
         print("Hello there, \(name)!")
     }
