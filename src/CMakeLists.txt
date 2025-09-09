@@ -21,8 +21,6 @@
 #
 # SPDX-License-Identifier: Apache-2.0
 
-set(Swift_INTERFACE_DIRECTORY ${CMAKE_BINARY_DIR}/swift)
-
 if(BUILD_APPLICATION)
     add_subdirectory(Application)
 endif()
