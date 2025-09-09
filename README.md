@@ -97,3 +97,16 @@ Hello there, Pavel!
 ```
 
 Experiment with changing the Library code and rebuilding the Library target via [`./scripts/rebuild_library.bash`](./scripts/rebuild_library.bash). This should make the Application reflect the changes made without rebuilding it, assuming the changes don't break [binary compatibility](https://github.com/swiftlang/swift/blob/main/docs/LibraryEvolution.rst#supported-evolution).
+
+## Output files
+
+Besides the dynamic library file (`.so`) and CMake package files (`.cmake`), other files are distributed with the library.
+
+The `.swiftinterface` file is akin to a header file (`.h`) in C. It represents the module's public interface, with implementation code omitted. To avoid the cost of loading these files, the compiler keeps a cache of module abstract syntax trees it has seen, serialized in a binary format (`.swiftmodule`). You can see those in the CMake's build directories.
+
+The `.swiftdoc` file is a binary file that contains serialized documentation information for Swift modules. This is where documentation strings can be pulled from by language servers (e.g., [SourceKit-LSP](https://github.com/swiftlang/sourcekit-lsp/)) to aid in writing code.
+
+See also:
+
+- [Swift Forums: Plan for module stability](https://forums.swift.org/t/plan-for-module-stability/14551)
+- [Swift Forums: Update on Module Stability and Module Interface Files](https://forums.swift.org/t/update-on-module-stability-and-module-interface-files/23337)
